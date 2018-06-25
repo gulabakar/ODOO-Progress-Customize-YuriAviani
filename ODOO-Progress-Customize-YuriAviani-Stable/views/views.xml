@@ -1,0 +1,113 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="mytestmodule.list">
+      <field name="name">mytestmodule list</field>
+      <field name="model">mytestmodule.mytestmodule</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="mytestmodule.action_window">
+      <field name="name">mytestmodule window</field>
+      <field name="res_model">mytestmodule.mytestmodule</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="mytestmodule.action_server">
+      <field name="name">mytestmodule server</field>
+      <field name="model_id" ref="model_mytestmodule_mytestmodule"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="mytestmodule" id="mytestmodule.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="mytestmodule.menu_1" parent="mytestmodule.menu_root"/>
+    <menuitem name="Menu 2" id="mytestmodule.menu_2" parent="mytestmodule.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="mytestmodule.menu_1_list" parent="mytestmodule.menu_1"
+              action="mytestmodule.action_window"/>
+    <menuitem name="Server to list" id="mytestmodule" parent="mytestmodule.menu_2"
+              action="mytestmodule.action_server"/>
+    -->
+
+     
+    <record model="ir.ui.view" id="component_tree_view">
+        <field name="name">comp.component.tree</field>
+        <field name="model">comp.component</field>
+        <field name="arch" type="xml">
+            <tree string="Component List">
+                <field name="name"/>
+                <field name="duration"/>       
+            </tree>
+        </field>
+    </record>
+     
+     
+     
+    <record model="ir.ui.view" id="component_form_view">
+        <field name="name">comp.component.form</field>
+        <field name="model">comp.component</field>
+        <field name="arch" type="xml">
+            <form string="Component Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="duration"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+     
+     
+    <record model="ir.actions.act_window" id="component_list_action">
+        <field name="name">Komponen</field>
+        <field name="res_model">comp.component</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Silahkan masukkan Komponen baru</p>
+        </field>
+    </record>
+     
+     
+     
+    <menuitem id="main_component_menu" name="Assignment"/>
+     
+         
+     
+    <menuitem id="main_menu" name="Main" parent="main_component_menu"/>
+     
+     
+     
+    <menuitem id="komponent_menu" name="Komponen" parent="main_menu" action="component_list_action"/>
+
+  </data>
+</odoo>
